@@ -2,6 +2,24 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
+  const [result, setResult] = useState("");
+
+  const handleClick = (event) => {
+    setResult(result.concat(event.target.name));
+  }
+  const clear = () => {
+    setResult("");
+  }
+  const backspace = () => {
+    setResult(result.slice(0, result.length - 1)); // Or (0, -1)
+  }
+  const calculate = () => {
+    try {
+      setResult(eval(result).toString());
+    } catch (err) {
+      setResult("Error");
+    }
+  }
 
   return (
     <>
